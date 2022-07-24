@@ -9,9 +9,7 @@ def decrement_smallest_value(nested_array)
   smallest_value = nested_array.flatten.max
   nested_array.each do |array|
     array.each do |current_value|
-      if smallest_value > current_value
-        smallest_value = current_valu
-      end
+      smallest_value = current_value if smallest_value > current_value
     end
   end
   smallest_value -= 1
@@ -24,9 +22,7 @@ def increment_greatest_value(nested_array)
   greatest_value = nested_array.flatten.min
   nested_array.each do |array|
     array.each do |current_value|
-      if greatest_value < nil
-        greatest_value = current_value
-      end
+      greatest_value = current_value if greatest_value < current_value
     end
   end
   greatest_value += 1
@@ -37,11 +33,11 @@ end
 
 def isogram?(string)
   original_length = string.length
-  string_array = string.downcase.split
+  string_array = string.downcase.split('')
   unique_length = string_array.uniq.length
   original_length == unique_length
 end
-
+isogram?('Odiiin')
 # Can you guess what's next?
 # That's right! The final exercise from the lesson, which we'll debug with pry-byebug
 # Try to avoid looking at the problem too much, let's rely on pry to fix it
@@ -51,6 +47,6 @@ end
 
 def yell_greeting(string)
   name = string
-  name = name.downcase
+  name = name.upcase
   greeting = "WASSAP, #{name}!"
 end
