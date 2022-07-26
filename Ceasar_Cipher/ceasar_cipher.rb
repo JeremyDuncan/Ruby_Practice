@@ -1,25 +1,27 @@
-# Implement a caesar cipher that takes in a string and the shift factor and then outputs the modified string:
-
-#   > caesar_cipher("What a string!", 5)
-#   => "Bmfy f xywnsl!"
-# Quick Tips:
-
-# You will need to remember how to convert a string into a number.
-# Don’t forget to wrap from z to a.
-# Don’t forget to keep the same case.
+# Author: Jeremy Duncan
+# www.jeremy-duncan.com
 
 def ceasar_cipher(string, shift)
   shiftedLetters = []
+  # Convert string to array of Ascii numbers
   asciiString = string.bytes
+
+  # iterate through array
   asciiString.each do |letter|
+    # if Lowercase Letters
     if letter > 96 && letter < 123
+      # add letter number and shift amount
       combined = letter + shift
+      # if combined total goes past z(122)...
       if combined > 122
+        # get remainder..
         remainder = combined - 122
+        # and add remainder back at begining of alphabet
         shiftedLetters << remainder + 96
       else
         shiftedLetters << combined
       end
+    # Else if Uppercase Letters...
     elsif letter > 64 && letter < 91
       combined = letter + shift
       if combined > 90
@@ -29,13 +31,15 @@ def ceasar_cipher(string, shift)
         shiftedLetters << combined
       end
     else
+      # Added sapces, special characters etc..
       shiftedLetters << letter
     end
   end
+  # Convert Ascii numbers to Characters
   cipher = shiftedLetters.pack('c*')
 end
 
-p ceasar_cipher('Jeremy Duncan :)', 5)
+p ceasar_cipher('This is my Ceasar Cipher!!', 5) #=> "Ymnx nx rd Hjfxfw Hnumjw!!"
 
 # ASCII KEY
 # a   -   z
