@@ -5,4 +5,6 @@ class Player
     @name = name
     @symbol = symbol
   end
+
+  attr_reader :symbol
 end
